@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>PhantomJS常用模块和方法</title>
+        <meta charset="utf-8">
+    </head> 
+    <body>
+        <div class="1phantom">
+            <h2>1.phantom</h2>
+            <table width="960" rules="all" border="1">
+            	<caption>phantom方法</caption>
+            	<tr>
+                	<th>方法原型</th>
+                	<th>功能</th>
+                	<th>例子</th>
+            	</tr>
+            	<tr>
+            		<td>{Boolean}addCookie(Object)</td>
+            		<td>添加一个Cookie信息到Cookie-Jar中</td>
+            		<td>phantom.addCookie({'name' : 'Added-Cookie-Name','value' : 'Added-Cookie-Value','domain' : '.google.com'});</td>
+           		 </tr>
+            	<tr>
+            		<td>{void} clearCookies()</td>
+					<td>删除Cookie jar中的所有cookie信息</td>	
+					<td>phantom.clearCookies();</td>				
+            	</tr>
+            	<tr>
+            		<td>{Boolean}deleteCookie(cookieName)</td>
+					<td>删除指定名称的Cookie信息</td>
+					<td>phantom.deleteCookie('Added-Cookie-Name')</td>
+            	</tr>
+            	<tr>
+            		<td>{void}phantom.exit(returnValue)</td>
+            		<td>以指定的返回值退出程序</td>
+            		<td>if （somethingIsWrong）{phantom.exit(1);}else {phantom.exit(0);}</td>
+            	</tr>
+            	<tr>
+            		<td>{boolean}phantom.injectJs(filename)</td>
+            		<td>注入外部的js文件</td>
+            		<td>var wasSuccessful = phantom.injectJs('lib/util.js');</td>
+            	</tr>
+            </table>
+        </div>
+        <div class="2.webpage">
+        	<p>对于webpage，主要说一下includeJs、open两个普通方法，onInitialized、onLoadFinished两个回调方法。</p>
+        	<div class="includeJs">
+        		<p>includeJs方法原型为includeJs(url,callback){void}，功能是包含从指定的URL获取远程javaScript脚本，并执行回调方法。示例代码如下：</p>
+        		<xmp>
+        			var webPage = require('webpage');
+					var page = webPage.create();
+					page.includeJs(
+						// Include the https version, you can change this to http if you like.
+						'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js',
+						function(){
+							(page.evaluate(function(){
+								//jQuery is loaded, now manipulate the DOM
+								var $loginform = $('form# login');
+								$loginform.find('input[name="username"]').value('phantomjs');
+								$loginform.find('input[name="password"]').value('c45p3r');
+							}))
+						}
+					);
+        		</xmp>
+        		
+        	</div>
+        </div>
+    </body>   
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素选取</title>
+</head>
+<body>
+    <p>要想对页面进行操作，首先要做的是选中页面元素。元素选取方法如表9-5所示。</p>
+    <table width="960" align="center" border="2" rules="all">
+        <caption>表9-5 定位方法</caption>
+        <tr>
+            <th>定位一个元素</th>
+            <th>定位多个元素</th>
+            <th>含义</th>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_id</td>
+            <td>find_elements_by_id</td>
+            <td>通过元素id进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_name</td>
+            <td>find_elements_by_name</td>
+            <td>通过元素名称进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_xpath</td>
+            <td>find_elements_by_xpath</td>
+            <td>通过xpath表达式进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_link_text</td>
+            <td>find_elements_by_link_text</td>
+            <td>通过完整超链接文本进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_partial_link_text</td>
+            <td>find_elements_by_partial_link_text</td>
+            <td>通过部分超链接文本进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_tag_name</td>
+            <td>find_elements_by_tag_name</td>
+            <td>通过标记名称进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_class_name</td>
+            <td>find_elements_by_class_name</td>
+            <td>通过类名进行定位</td>
+        </tr>
+        <tr align="center">
+            <td>find_element_by_css_selector</td>
+            <td>find_elements_by_css_selector</td>
+            <td>通过css选择器进行定位</td>
+        </tr>
+    </table>
+
+    <p>除了上面具有确定功能的方法，还有两个通用方法find_element和find_elements，可以通过传入参数来指定功能。示例如下：</p>
+    <xmp>
+        from selenium.webdriver.common.by import By
+        driver.find_element(By.XPATH, '//button[text()="some text"]')
+    </xmp>
+    <p></p>
+</body>
+</html>
